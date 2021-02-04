@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/orders")
+@CrossOrigin(origins = "https://forever-bookstore.netlify.app")
 public class OrderController {
 
     @Autowired
