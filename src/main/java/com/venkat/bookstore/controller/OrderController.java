@@ -9,13 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(path = "/api/orders")
-@CrossOrigin(origins = "https://forever-bookstore.netlify.app")
 public class OrderController {
 
     @Autowired
     private DefaultOrderService orderService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping(path = "",consumes = "application/json")
     public ResponseEntity<OrderDetails> placeOrder(@RequestBody OrderForm orderForm) {
         try {
