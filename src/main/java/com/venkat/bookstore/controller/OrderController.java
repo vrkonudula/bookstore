@@ -9,15 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin
 @RequestMapping(path = "/api/orders")
 public class OrderController {
 
     @Autowired
     private DefaultOrderService orderService;
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping(path = "",consumes = "application/json")
+    @PostMapping(path = "")
     public ResponseEntity<OrderDetails> placeOrder(@RequestBody OrderForm orderForm) {
         try {
             long orderId = orderService.placeOrder(orderForm.getCustomerForm(),orderForm.getCart());
