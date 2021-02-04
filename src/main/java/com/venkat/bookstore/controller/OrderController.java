@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/orders")
+@CrossOrigin(origins = "https://forever-bookstore.netlify.app/")
 public class OrderController {
 
     @Autowired
     private DefaultOrderService orderService;
 
     @PostMapping(path = "",consumes = "application/json")
-    @CrossOrigin(origins = "https://forever-bookstore.netlify.app/")
     public ResponseEntity<OrderDetails> placeOrder(@RequestBody OrderForm orderForm) {
         try {
             long orderId = orderService.placeOrder(orderForm.getCustomerForm(),orderForm.getCart());
