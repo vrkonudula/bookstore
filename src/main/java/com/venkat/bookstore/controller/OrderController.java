@@ -4,20 +4,19 @@ import com.venkat.bookstore.api.ApiException;
 import com.venkat.bookstore.model.order.DefaultOrderService;
 import com.venkat.bookstore.model.order.OrderDetails;
 import com.venkat.bookstore.model.order.OrderForm;
-import com.venkat.bookstore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/orders")
-@CrossOrigin
 public class OrderController {
 
     @Autowired
     private DefaultOrderService orderService;
 
     @PostMapping(path = "",consumes = "application/json")
+    @CrossOrigin(origins = "https://forever-bookstore.netlify.app/")
     public ResponseEntity<OrderDetails> placeOrder(@RequestBody OrderForm orderForm) {
         try {
             long orderId = orderService.placeOrder(orderForm.getCustomerForm(),orderForm.getCart());
